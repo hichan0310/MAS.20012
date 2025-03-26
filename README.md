@@ -1,7 +1,7 @@
 # 선형대수학
 
 Linear Algebra - Hoffman and Kunze  
-영어 단어들 정리하고 교재 theorem들 한국어로 증명한거 쓰려고 함  
+영어 단어들 정리하고 헷갈릴 수 있는 교재 theorem들 한국어로 증명한거 쓰려고 함  
 
 
 ## Chapter1
@@ -71,4 +71,29 @@ n*n 행렬 A에 대해 아래 3개는 동치이다.
 
 
 ## Chapter 2
+- commutative : 교환법칙 성립
+- associative : 결합법칙 성립
+- subspace-spanned : 어떤 벡터들을 포함하고 있는 벡터공간의 모든 부분공간의 교집합을 벡터의 subspace-spanned라고 한다.
+
+<br>
+
+W가 V의 subspace인 것과 V에서 정의한 연산 그대로 W에 적용하여 W에 포함된 a, b, 스칼라 c에 대해 ac+b가 W에 포함되는 것은 동치이다. 
+> 분배, 결합 등은 V 벡터공간으로 증명됨  
+> (-1)p+p=0으로 덧셈 항등원 포함, (-1)p+0=-p로 덧셈 역원 포함  
+> ca+0=ca로 스칼라곱 닫힘, 1a+b=a+b로 덧셈 닫힘  
+
+<br>
+
+V의 subspace의 intersection은 subspace이다. 
+> $W_1$, $W_2$라고 하고 intersection을 W라고 하자.  
+> $W_1$, $W_2$는 부분공간이므로 W에 포함되는 a, b에 대해 ca+b는 $W_1$, $W_2$에 둘다 포함되게 된다. 
+> 이것이 W와 같고 W도 부분공간이 된다. 
+
+<br>
+
+subspace-spanned인 subspace는 벡터들의 선형결합으로 이루어진 집합이다. 
+> 일단 벡터공간이니 당연히 선형결합은 존재한다.  
+> 선형결합이 아닌 것이 있으면 당연히 그것을 포함하지 않는 것이 존재하여 교집합 안에 포함되지 않음. 
+
+
 
