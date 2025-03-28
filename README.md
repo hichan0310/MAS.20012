@@ -125,7 +125,114 @@ W가 유한 차원 벡터공간 V의 부분공간이면 W의 모든 선형독립
 
 <br>
 
-[//]: # (todo:좌표변환 행렬 부분부터 적으면 됨)
+$[\alpha]_{\beta}$ : 벡터 $\alpha$를 ordered basis $\beta$로 만드는 좌표를 의미함 (coordinate)  
+좌표변환 행렬 P : $[\alpha]_{\beta}=P[\alpha]_{\beta^{'}}$  
+P는 invertible이고 유일하다. 
+$$
+α=\begin{bmatrix}β_1 & β_2 & ... & β_n\end{bmatrix}[α]_{β}
+$$
+$$
+=\begin{bmatrix}β_1 & β_2 & ... & β_n\end{bmatrix}P[α]_{β^{'}}
+$$
+$$
+=\begin{bmatrix}β_1^{'} & β_2^{'} & ... & β_n^{'}\end{bmatrix}[α]_{β^{'}}
+$$
+$$
+βP=β^{'}
+$$
+P의 col vector는 $β^{'}$의 각 기저를 $β$로 나타낸 좌표 벡터이다. 
+
+<br>
+
+row-reduced echelon matrix의 0이 아닌 row vector들은 그것의 row space의 기저이다. 
+> row vector의 생성공간이기 때문에 선형독립만 증명하면 된다.  
+> 선형독립도 그냥 선형결합으로 0을 만든다고 했을 때 1이 최초로 등장하는 부분에는 나머지가 0이므로 그 0이 곱해져야 그 열이 0이 된다.  
+
+<br>
+
+$F^n$의 부분공간인 W가 존재할 때 row space가 W가 되는 0이 아닌 row-reduced echelon matrix가 유일하게 존재한다. 
+> 선형독립인 임의의 기저 하나를 그냥 잡을 수 있다. (기저로 확장 가능하기 때문)   
+> 이걸 row-reduced echelon matrix로 바꾸면 최소 하나는 존재하게 된다.  
+> row space가 같은 2개의 row-reduced echelon matrix가 존재한다고 하면 이 2개는 row-equivalent이다.
+> row-equivalent인 row-reduced echelon matrix 2개는 없다.  
+> https://www.youtube.com/watch?v=EcgaeUUYV1U  
+
+근데 이거 뭔가 이상하다. 교과서에서는 row-reduced echelon matrix의 유일성 없이 증명하고 이걸 통해서 유일성을 증명했다. 나중에 확인해보고 바꿔야 할지도
+
+<br>
+
+## Chapter 3
+- linear operator : V to V 선형변환
+- 선형변환에서 invertible : T가 있을 때 UT=TU=I인 선형변환 U가 존재하면 U=T$^{-1}$이고 T는 invertible이다.
+- non-singular : T(x)=0인 x가 0 하나밖에 없으면 T를 non-singular이라고 한다.  
+
+
+
+T가 V to W 선형변환일 때 rank(T)+nullity(T)=dim(V)
+> T의 nullspace의 기저를 쭉 나타내고 그것을 $b_1, b_2, ..., b_n$이라고 하자.  
+> 여기에서 dim(V)=m개까지 기저 확장이 가능하다.  
+> 그러면 $b_{n+1}, b_{n+1}, ..., b_m$이 추가로 들어가게 되고 $T(b_{n+1}), ..., T(b_{m})$이 T(V)를 생성함을 보이면 된다. 
+> 일단 $b_1, b_2, ..., b_m$은 V의 기저이다. $T(b_1), ..., T(b_m)$은 T(V)를 생성한다.  
+> 근데 $b_1, b_2, ..., b_n$은 T 거치면 0이 되니까 당연히 $T(b_{n+1}), ..., T(b_{m})$로도 T(V)를 생성한다.  
+
+<br>
+
+A가 m*n 행렬일 때 row rank(A)=column rank(A)
+> n차원 벡터 x T(x)=Ax일때 rank(T)=column rank(A)=n-nullity(T)  
+> Ax=0을 만드는 x의 차원을 생각해보면 A를 row-reduced echelon matrix로 바꿔서  
+> Rx=0으로 생각할 수 있고 R의 0이 아닌 행의 수를 r이라고 할 때 r은 column rank(A)가 된다.  
+> $x_1, x_2, ..., x_n$ 중에서 첫 1이 나오는 자리에 들어가는 x들을 제외하고 모두 자유롭게 결정할 수 있다.  
+> 1이 나오는 자리의 수는 r이라서 Rx=0이 되는 x의 차원은 n-r=n-column rank(A)이다.  
+
+<br>
+
+각각 m, n차원 벡터공간 W, V에 대해 L(W, V)는 mn차원 벡터공간이다. (L(W, V)는 W to V 선형변환의 집합을 의미함)
+> W의 기저 $a_1, a_2, ..., a_m$  
+> V의 기저 $b_1, b_2, ..., b_n$  
+> $T_{ij}(a_i)=b_j$ 이것으로 모든 선형변환 T를 유일하게 만들 수 있다는 것을 증명해야 한다.  
+> 임의의 T에 대해 $[T(a_1)]_b, [T(a_1)]_b, ..., [T(a_m)]_b$를 얻으면 mn개의 $T_{ij}(a_i)=b_j$와 일대일로 대응된다.  
+> $[T(x)]_b=\begin{bmatrix}[T(a_1)]_b && [T(a_1)]_b && ... && [T(a_m)]_b\end{bmatrix}[x]_a$로 모든 x에 대해 T값을 알 수 있다.   
+> 따라서 $T_{ij}$가 있으면 모든 x에 대해 T(x)가 정해지게 된다. 모든 선형변환을 만들 수 있음이 증명되었다.  
+
+<br>
+
+모든 V에서 선형독립인 집합이 T를 거쳐서 W에서 선형독립 집합이 되는 것과 T가 non-singular인 것은 동치이다.  
+> V의 선형독립 집합인 기저 a={$β_1, β_2, ..., β_n$}이 있을 때 b={$T(β_1), T(β_2), ..., T(β_n)$}가 W에서 선형독립이라면  
+> $T(x)=T([β_1\ \ β_2\ \ ...\ \ β_n][x]_a)=[T(β_1)\ \ T(β_2)\ \ ...\ \ T(β_n)][x]_a=0$  
+> b가 선형독립 집합이라서 $[x]_a$가 0밖에 없다.  
+>   
+> 만약 T(x)=x가 0밖에 없으면  
+> 어떤 선형독립 집합 a={$β_1, β_2, ..., β_n$}를 V에서 잡아도 
+> $c_1T(β_1)+c_2T(β_2)+...+c_nT(β_n)=T(c_1β_1+c_2β_2+...+c_nβ_n)=0$  
+> $c_1β_1+c_2β_2+...+c_nβ_n=0$밖에 없는데 a가 선형독립 집합이라서 $c_i=0$밖에 없고 $T(β_i)$들도 선형독립이다.  
+
+<br>
+
+차원이 같은 두 집합 V, W에서 V to W 선형변환 T에 대해 아래 3개는 동치이다.  
+T는 invertible이다.  
+T는 non-singular이다.  
+T는 onto이다. (T(V)=W)
+> 아직안함
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
