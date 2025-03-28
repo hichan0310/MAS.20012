@@ -4,6 +4,8 @@ Linear Algebra - Hoffman and Kunze
 영어 단어들 정리하고 헷갈릴 수 있는 교재 theorem들 한국어로 증명한거 쓰려고 함  
 
 중간중간 그냥 내 머리로 생각해서 적은 풀이도 있어서 틀릴 가능성 있음  
+그냥 깃허브에서 보면 수식이 깨지고 html로 만드니까 인용문이 깨진다.  
+jetbrains ide 기준 정상적으로 보이게 만들어짐.  
 
 
 ## Chapter1
