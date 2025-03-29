@@ -167,8 +167,9 @@ $F^n$의 부분공간인 W가 존재할 때 row space가 W가 되는 0이 아닌
 - linear operator : V to V 선형변환
 - 선형변환에서 invertible : T가 있을 때 UT=TU=I인 선형변환 U가 존재하면 U=T$^{-1}$이고 T는 invertible이다.
 - non-singular : T(x)=0인 x가 0 하나밖에 없으면 T를 non-singular이라고 한다.  
-
-
+- Group(군) : 어떤 원소들의 집합인데 2개 원소의 연산을 정의하여 그 연산의 결합법칙 성립, 항등원 존재, 역원 존재하는 것  
+- isomorphism : 벡터공간 V, W에 대해 V to W 선형변환 T가 일대일대응일 때 T를 isomorphism of V onto W라고 한다. isomorphism of V onto W가 존재하면 V는 isomorphic to W이다.  
+- similarity : n*n 행렬 A, B에 대해 $B=P^{-1}AP$인 가역행렬 P가 존재하면 similar이라고 한다. 
 
 T가 V to W 선형변환일 때 rank(T)+nullity(T)=dim(V)
 > T의 nullspace의 기저를 쭉 나타내고 그것을 $b_1, b_2, ..., b_n$이라고 하자.  
@@ -214,7 +215,63 @@ A가 m*n 행렬일 때 row rank(A)=column rank(A)
 T는 invertible이다.  
 T는 non-singular이다.  
 T는 onto이다. (T(V)=W)
-> 아직안함
+> T가 invertible이면 $T(x)=0$의 해는 $x=T^{-1}(0)=0$ 하나뿐이다. (non-singular)  
+> T(x)=0이면 x=0이라는 것은 T의 nullspace가 0 하나라는 것이고 nullity(T)=0, rank(T)=dim(V)이다.  
+> T(V)가 W의 부분공간이고 차원이 같다. 따라서 T(V)=W가 된다. (뭔가 증명이 필요할 것 같은데 일단 교과서에는 이렇게 나옴)  
+> 그리고 서로 다른 x, y에 대해 T(x)=T(y)라고 하면 T(x-y)=0인 것이 x-y=0밖에 없어서 injective이다.  
+> T는 일대일대응이고 invertible이다.  
+> 교과서에는 뭔가 이상하게 해놨다. 이 풀이가 맞는 것 같은데 기저가 어쩌고 저쩌고 하고 non-singular에서 invertible을 그냥 넘어간다.  
+
+<br>
+
+F 위에서 정의된 n차원 벡터공간은 isomorphic to F$^n$이다.  
+> 벡터공간의 순서 기저를 적당히 하나 잡고 그 좌표와 대응되는 선형변환이 존재한다.  
+
+<br>
+
+n차원 벡터공간 V, m차원 벡터공간 W, V의 순서 기저 $β$, W의 순서 기저 $β^{'}$  
+V to W 선형변환에 대해 $[T(x)]_{β^{'}}=A[x]_β$ 인 행렬 A가 존재한다.  
+> 증명보다는 그냥 많이 사용하는 정리일듯  
+> A를 matrix of T relative to the ordered basis라고 부른다.  
+
+<br>
+
+n차원 벡터공간 V, m차원 벡터공간 W, V의 순서 기저 $β$, W의 순서 기저 $β^{'}$  
+V to W 선형변환 T와 matrix of T relative to the ordered basis는 isomorphism이다. (T랑 A는 ismorphism이다.)  
+> 이것도 증명보다는 많이 사용하는 정리일 것 같다.  
+
+<br>
+
+벡터공간 V의 순서기저 $β$, $β^{'}$  
+T가 V에서의 linear operator일 때 좌표변환 행렬 $P=\begin{bmatrix}[α_1^{'}]_β & [α_1^{'}]_β & ... & [α_n^{'}]_β\end{bmatrix}$  
+$[T]_{β^{'}}=P^{-1}[T]_{β}P$이다.  
+> 예를 들어 설명하자면 
+> $$
+β=\{\begin{bmatrix}1 \\ 0 \\ 0\end{bmatrix}, \begin{bmatrix}0 \\ 1 \\ 0\end{bmatrix}, \begin{bmatrix}0 \\ 0 \\ 1\end{bmatrix}\}, \ \ 
+β^{'}=\{\begin{bmatrix}1 \\ 0 \\ 1\end{bmatrix}, \begin{bmatrix}1 \\ 1 \\ 0\end{bmatrix}, \begin{bmatrix}0 \\ 1 \\ 1\end{bmatrix}\}
+$$
+$$
+T(x_1, x_2, x_3)=(2x_1+x_3, x_2+x_1, 2x_2+x_3)
+$$
+$$
+[T]_β=\begin{bmatrix} 2 & 0 & 1 \\ 1 & 1 & 0 \\ 0 & 2 & 1 \end{bmatrix},\ \ 
+P=\begin{bmatrix}1&1&0 \\ 0&1&1 \\ 1&0&1\end{bmatrix}
+$$
+> 이런 상황에서 $[T]_β$, $P$를 구하기는 쉬운데 바로 $[T]_{β^{'}}$를 구하기는 어렵다. 
+> $$
+T(x)=β^{'}[T]_{β^{'}}[x]_{β^{'}}=β[T]_{β}[x]_{β}
+$$
+> $β$, $β^{'}$ 에서의 좌표 $c$, $c^{'}$에 대해 
+$$
+βc=β^{'}c^{'}=β^{'}P^{-1}c,\ \ [x]_{β}=P[x]_{β^{'}}
+$$
+$$
+T(x)=β^{'}[T]_{β^{'}}[x]_{β^{'}}=β[T]_{β}[x]_{β}=β[T]_{β}P[x]_{β^{'}}=β^{'}P^{-1}[T]_{β}P[x]_{β^{'}}
+$$
+$$
+[T]_{β^{'}}=P^{-1}[T]_{β}P
+$$
+> 좌표변환 행렬 외에도 invertible operator이면 된다.  
 
 
 
@@ -238,3 +295,57 @@ T는 onto이다. (T(V)=W)
 
 
 
+
+
+
+
+
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+
+종강 언제하지
