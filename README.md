@@ -169,7 +169,12 @@ $F^n$의 부분공간인 W가 존재할 때 row space가 W가 되는 0이 아닌
 - non-singular : T(x)=0인 x가 0 하나밖에 없으면 T를 non-singular이라고 한다.  
 - Group(군) : 어떤 원소들의 집합인데 2개 원소의 연산을 정의하여 그 연산의 결합법칙 성립, 항등원 존재, 역원 존재하는 것  
 - isomorphism : 벡터공간 V, W에 대해 V to W 선형변환 T가 일대일대응일 때 T를 isomorphism of V onto W라고 한다. isomorphism of V onto W가 존재하면 V는 isomorphic to W이다.  
-- similarity : n*n 행렬 A, B에 대해 $B=P^{-1}AP$인 가역행렬 P가 존재하면 similar이라고 한다. 
+- similarity : n*n 행렬 A, B에 대해 $B=P^{-1}AP$인 가역행렬 P가 존재하면 similar이라고 한다.  
+- dual space : 벡터공간에서 스칼라 공간으로 가는 선형변환의 공간  
+- hyperspace : 1차원 낮은 부분공간  
+- annihilator : V의 dual space의 부분공간인데 V의 부분공간인 W의 원소들을 모두 0으로 만드는 함수의 집합을 W의 annihilator라고 한다. W$^0$으로 표기한다.  
+- double dual : dual space의 dual space이다. 슬슬 타입이 엄청나게 복잡해진다. W$^{00}$으로 표기한다.  
+
 
 T가 V to W 선형변환일 때 rank(T)+nullity(T)=dim(V)
 > T의 nullspace의 기저를 쭉 나타내고 그것을 $b_1, b_2, ..., b_n$이라고 하자.  
@@ -273,11 +278,30 @@ $$
 $$
 > 좌표변환 행렬 외에도 invertible operator이면 된다.  
 
+<br>
 
+기저 $β=\{α_1, α_2, .., α_n\}$인 V에 대해 V의 dual space에 대해 dual basis를 정의할 수 있다.  
+dual basis는 $\{f_1, f_2, ..., f_n\ |\ f_i(a_j)=(1\ \ if\ \ i==j\ \ else\ \ 0)\}$ 이것을 만족하는 유일한 f들로 정의된다.  
 
+이걸 다항식에 적용하면 실수 위에서 정의된 2차 이하 다항식의 dual space는 다항식을 넣으면 그 스칼라 값으로 나오는 함수의 집합이라고 할 수 있다.   
+여기에서 다항식 집합의 순서기저를 잘 잡으면 그 함수를 그냥 다항식에 값 대입으로 바꿀 수 있는데 그걸 만족하는 것이 라그랑주 다항식이다.  
 
+<br>
 
-
+벡터공간 V의 부분공간 W에 대해 dim(W)+dim(W$^0$)=dim(V)
+> W의 기저 $\{α_1, α_2, ..., α_k\}$이면 V의 부분공간이라 기저로 확장하여 $\{α_1, α_2, ..., α_k, α_{k+1}, ..., α_n\}$까지 만들 수 있다.  
+> 이 기저가 있을 때 V의 dual basis를 생각해보면 $f_{k+1}$~$f_n$의 생성공간이 $W^0$이 된다.
+> 당연히 저 생성공간은 $W^0$의 부분집합이고, 만약 생성공간에 포함되지 않고 $W^0$에 포함되는 것이 있다면 그것을 $f^{'}$로 하여  
+> $f^{'}(α_1)=f^{'}(α_2)=...=f^{'}(α_k)=0$인데 
+> $$
+f^{'}=\sum_{i=k+1}^n f^{'}(α_i)f_i=0
+$$따라서 span 안에 포함되어 모순이다.  
+> $$
+dim(V)=n, dim(W)=k, dim(W^0)=n-k  
+$$
+$$
+dim(W)+dim(W^0)=dim(V)
+$$
 
 
 
