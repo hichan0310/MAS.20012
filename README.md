@@ -422,6 +422,81 @@ T$^t$가 W$^*$ to V$^*$ 선형변환
 <br>
 
 
+## Chapter 4
+
+- ring(환) : 덧셈에서 닫혀있고 곱셈에 의해 닫혀있는 집합에서 아래 3개 만족하면 된다.  
+  덧셈 교환법칙 성립  
+  곱셈 결합법칙 성립  
+  분배법칙 성립  
+  여기에서 곱셈 항등원 존재하고 곱셈 교환법칙 성립하면 ring with identity라고 한다.  
+- Linear Algebra over field F : F 위의 벡터공간 A가 벡터간 덧셈 외에도 벡터간 곱셈이 추가로 정의되어 결합법칙, 분배법칙, 스칼라곱 호환 성립하면 선형대수라고 한다.
+  대표적으로 다항식은 Linear Algebra이다. 
+- Polynomial over F ($F[x]$) : F에서 정의된 무한차원 벡터공간이고 1, $x$, $x^2$, ... 의 생성공간
+- deg(f) : f가 polynomial일 때 차수를 의미한다. Thm1에서 non-0 polynomial 조건 있어서 gpt한테 물어보니까 0의 차수는 -inf라고 한다. 
+- scala polynomials : 상수항만 있는거
+- Vandermonde matrix : $\begin{bmatrix}
+1 & x_0 & x_0^2 & \cdots & x_0^n \\
+1 & x_1 & x_1^2 & \cdots & x_1^n \\
+\vdots & \vdots & \vdots & \ddots & \vdots \\
+1 & x_n & x_n^2 & \cdots & x_n^n \\
+\end{bmatrix}$
+- 두 Linear Algebra의 isomorphic : 어떤 bijective 선형 사상이 존재하여 $T(cα+dβ)=cT(α)+dT(β)$, $T(αβ)=T(α)T(β)$
+- 추가로 궁금해서 찾아봤는데 일대일대응 선형 함수가 존재하는 Linear Algebra, Vector Space가 있을 때 구조 이식으로 Vector Space를 Linear Algebra로 승격 가능
+- 어떤 다항식 f가 있을 때 f를 0으로 만드는 값을 root, 또는 zero of a given polynomial over F라고 한다. 
+- multiplicity : 중근  
+  어떤 자연수 r에 대해 0번째부터 r번째 미분값까지는 0이고 이후에 r+1번째에서 0이 아닌 경우 중근이라고 한다. 
+- ideal in $\mathbb{F}[x]$ : $\mathbb{F}[x]$의 부분공간인데 $\text{If } f \in \mathbb{F}[x],\ g \in M \Rightarrow fg \in M$ 이면 M을 ideal in $\mathbb{F}[x]$이라고 한다.  
+  보편적인 ideal의 정의는 commutative ring(곱셈 교환법칙 성립하는 환)에서 곱셈 흡수 조건과 함께 덧셈에 대해 닫혀있고 덧셈 항등원과 역원이 존재한다는 조건이 더 들어간다.  
+  다항식의 경우 그런 거 없어도 -1, 0이 다항식 안에 있어서 되는데 아니 잠깐 생각해보니 일반적인 환도 마찬가지 아님?  
+- $(x+1)\mathbb{F}[x]$ 이런 식으로 (x+1)의 배수인 ideal을 쓴다. 
+- monic polynomial : 최고차항 1인 다항식
+- irreducible polynomial : 인수분해 안되는 다항식
+- relatively prime : 서로소
+
+영어가 너무 많다.  
+
+
+
+
+라그랑주 보간법
+$$
+\begin{bmatrix}
+1 & x_0 & x_0^2 & \cdots & x_0^n \\
+1 & x_1 & x_1^2 & \cdots & x_1^n \\
+\vdots & \vdots & \vdots & \ddots & \vdots \\
+1 & x_n & x_n^2 & \cdots & x_n^n \\
+\end{bmatrix}
+\cdot
+\begin{bmatrix}
+a_0 \\
+a_1 \\
+\vdots \\
+a_n \\
+\end{bmatrix}
+=
+\begin{bmatrix}
+y_0 \\
+y_1 \\
+\vdots \\
+y_n \\
+\end{bmatrix}
+$$
+
+Vandermonde matrix가 invertible이라서 간단하게 행렬 연산으로 구할 수도 있다. 
+
+
+
+$\mathbb{F}[x]$의 ideal은 최소 단위가 존재하여 그 단위의 다항식 배수가 된다.  
+> d가 최소 차수 다항식이라고 하자.  
+> ideal이 subspace라서 덧셈에 닫혀있기 때문에 ideal 안의 임의의 다항식 f라고 한다면  
+> f=dp+r 형식으로 나올 것이고 r도 그 ideal에 포함되게 된다. 근데 r은 d보다 작은 차수라서 0밖에 없다.  
+> 따라서 임의의 f가 d의 다항식 배수가 된다.  
+> 이걸 $d\mathbb{F}[x]$로 표현한다.  
+
+
+
+다항식들의 최대공약수를 정의할 수 있다.  
+> $\sum p_i\mathbb{F}[x]=d\mathbb{F}[x]$인 d가 $p_i$의 최대공약수이다.
 
 
 
