@@ -524,7 +524,7 @@ $f$가 인수분해가 되지 않는 서로 다른 다항식들의 곱으로 나
 > $f=\prod p_i$,  $f_i=\frac{f}{p_i}$로 정의하면 $f^{'}=\sum p_i^{'}f_i$  
 > 이때 어떤 $p_i$도 $f^{'}$을 나누지 않는다. 
 
-
+<br>
 
 ## Chapter 5
 
@@ -539,11 +539,12 @@ $f$가 인수분해가 되지 않는 서로 다른 다항식들의 곱으로 나
   D(a, b)=D(a, b)+D(b, b)-D(a+b, a+b)+D(-a, -a)=D(a+b, b)-D(a+b, a+b)+D(-a, -a)=D(a+b, -a)+D(-a, -a)=D(b, -a)=-D(b, a)
 - determinant : D(I)=1이고 alternating인 함수이다. 유일하게 정해진다. 
 
+<br>
 
 n-linear function의 선형결합은 n-linear이다. 
 > 당연하다. 각 열에서 선형변환이라 합친것도 당연히 각 열에서 선형변환이고 n-linear이 된다. 
 
-
+<br>
 
 아래 사진과 같이 $E_j$를 잡으면 이건 determinant이다. (D는 determinant)  
 ![img_2.png](img_2.png)  
@@ -552,6 +553,8 @@ n-linear function의 선형결합은 n-linear이다.
 > 만약 같은 2개가 있고 그 2개가 k개 행 차이가 난다고 하면 그 2개 행 빼고는 D 성질에 의해 싹 0으로 날아가고  
 > $(-1)^k$배, D 안에서는 교환이 k-1번 일어나야 같아져서 $(-1)^(2k-1)=-1$ 따라서 같은 행 2개가 있을 때 그 2개 행에서 저 연산 한 것이 부호 반대로 되고 결과 0 나온다 (alternating)
 > 이제 이게 det라는 것은 증명했으니 det의 유일성만 증명하면 det
+
+<br>
 
 $$
 I=\begin{bmatrix}\epsilon_1 \\ \epsilon_2 \\ \vdots \\ \epsilon_n \end{bmatrix}
@@ -571,8 +574,85 @@ $$
 
 n에 대해 n!개의 $\sigma$가 존재하고 정해져 있다 $\rightarrow$ determinant는 유일하다. 
 
+<br>
 
 $sgn(\sigma_{\sigma^{'}})=sgn(\sigma)sgn(\sigma^{'}),\ \ \text{n-linear} \rightarrow det(AB)=det(A)det(B)$
+
+<br>
+
+$det(A)=det(A^T)$
+> $$
+det(A)=\sum_{\sigma} (A_{1\sigma_1}A_{1\sigma_2}...A_{1\sigma_n}D(\epsilon_{\sigma_1}, \epsilon_{\sigma_2}, ..., \epsilon_{\sigma_n}))
+$$
+> $$
+det(A^T)=\sum_{\sigma} (A_{1\sigma^{-1}_1}A_{1\sigma^{-1}_2}...A_{1\sigma^{-1}_n}D(\epsilon_{\sigma^{-1}_1}, \epsilon^{-1}_{\sigma_2}, ..., \epsilon^{-1}_{\sigma_n}))
+$$
+> $$
+sgn(\sigma)sgn(\sigma^{-1})=sgn(1, 2, 3, 4, ..., n)=1
+$$
+> $$
+det(A)=det(A^T)
+$$
+
+<br>
+
+$det(\begin{bmatrix}A & B \\ 0 & C\end{bmatrix})=det(A)det(C)$
+> C쪽에서 n-linear이라서 det(C) 빼고 I 넣을 수 있다. 
+
+<br>
+
+$C_{ij}=(-1)^{i+j}det(A(i|j))$로 잡으면 $[C_{ji}]$ 행렬은 n*n 행렬인데 A랑 곱하면 i=j를 제외하고 모두 열이 2개 같은 행렬의 행렬식을 구하는 것이 되어서 0이다. i=j일 경우 그냥 행렬식이다. 
+따라서 $adj(A)A=[C_{ji}]A=det(A)I$
+
+<br>
+
+$K$가 commutative ring with identity이고 V가 free K-module with n generators이면 n개의 기저로 V가 만들어진다. 
+> n보다 적은 원소로 생성이 가능하다면 기저 모아놓은 행렬 A가 존재하여 m*n 행렬을 만들고 좌표 행렬이 표준기저를 생성해야 한다. 
+> 근데 그러면 0을 n-m개만큼 더 추가해서 nn 행렬 만들면 $P^{'}A^{'}=I$가 되어야 하는데 det(A^{'})=0이라 불가능
+
+<br>
+
+D를 텐서곱을 이용해서 나타낼 수도 있다. 
+> $$
+D(α_1, α_2, ..., α_n)=(\sum_σ sgn(σ) f_{σ(1)}⊗f_{σ(2)}⊗\ ...\ ⊗f_{σ(n)})(α_1, α_2, ..., α_n)
+$$
+> $$
+D(α_1, α_2, ..., α_n)=(\sum_σ sgn(σ) f_{σ(1)}(α_1)f_{σ(2)}(α_2)...f_{σ(n)}(α_n))
+$$
+> $$
+D(α_1, α_2, ..., α_n)=(\sum_σ sgn(σ) A_{1σ(1)}A_{2σ(2)}...A_{nσ(n)})=det(A)
+$$
+
+<br>
+
+$V$가 $K^n$이라고 하면  
+$Λ^r(V)$ : r-linear alternating function의 공간($V^r\ to\ K$)  
+이것은 K-free module이고 기저의 개수는 $_nC_r$이다.  
+> V의 기저 $β_1, β_2, ..., β_n$  
+> V의 dual basis $f_1, f_2, ..., f_n$  
+> 그러면 dual basis의 r-permutation 텐서곱의 선형결합으로 $Λ^r(V)$을 만든다.  
+> 아니 그러면 $\frac{n!}{(n-r)!}$인데  
+> 아 그래 어떤 alternating function 에 대해 
+> $$
+\forall L \in Λ^r(V)\ \ \ L=\sum L(β_{j_1}, β_{j_2}, ..., β_{j_n})f_{j_1}⊗f_{j_2}⊗\ ...\ ⊗f_{j_n)}
+$$
+> 만약 여기에서 같은 $j_i$가 있다면 L에서 0이 된다.  
+> 만약 2개가 바뀐다면 그냥 부호만 바뀌는 것이다.  
+> 따라서 모든 순서 바뀌는 것은 선형종속이 되고 $\frac{n!}{(n-r)!r!}$ 순서 무시할 수 있게 된다.  
+> 기저는 $_nC_r$  
+> n=r이면 det의 스칼라배가 된다. 그리고 선형 연산자가 있으면 1차원이라서 그냥 스칼라로 튀어나온다. 
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
